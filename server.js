@@ -2,12 +2,12 @@ var http = require("http");
 var url = require("url");
 
 
-function start(router)
+function start(router, ipaddr, port)
 {
    http.createServer(function(request, response)
    {
 		var pathname = url.parse(request.url).pathname;
-		router(pathname);
+		//router(pathname);
 
 		var fullBody = '';
 
@@ -92,9 +92,9 @@ function start(router)
     });
 
 
-}).listen(8888);
+}).listen(ipaddr, port);
 
-console.log("Start Server");
+console.log("Start Server at " + ipaddr + ":" + port);
 
 }
 exports.start = start;
